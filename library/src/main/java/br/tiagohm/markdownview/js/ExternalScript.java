@@ -2,19 +2,19 @@ package br.tiagohm.markdownview.js;
 
 public class ExternalScript implements JavaScript {
     private final String mSrc;
-    private final boolean mIsAync;
+    private final boolean mIsAsync;
     private final boolean mIsDefer;
     private final String mType;
 
-    public ExternalScript(String src, boolean isAync, boolean isDefer, String type) {
+    public ExternalScript(String src, boolean isAsync, boolean isDefer, String type) {
         mSrc = src;
-        mIsAync = isAync;
+        mIsAsync = isAsync;
         mIsDefer = isDefer;
         mType = type;
     }
 
-    public ExternalScript(String url, boolean isAync, boolean isDefer) {
-        this(url, isAync, isDefer, "text/javascript");
+    public ExternalScript(String url, boolean isAsync, boolean isDefer) {
+        this(url, isAsync, isDefer, "text/javascript");
     }
 
     public String getSrc() {
@@ -25,8 +25,8 @@ public class ExternalScript implements JavaScript {
         return mType;
     }
 
-    public boolean isAync() {
-        return mIsAync;
+    public boolean isAsync() {
+        return mIsAsync;
     }
 
     public boolean isDefer() {
@@ -36,7 +36,7 @@ public class ExternalScript implements JavaScript {
     @Override
     public String toHTML() {
         return String.format("<script %s%ssrc='%s' type='%s'></script>\n",
-                isAync() ? "async " : "",
+                isAsync() ? "async " : "",
                 isDefer() ? "defer " : "",
                 getSrc(),
                 getType());
